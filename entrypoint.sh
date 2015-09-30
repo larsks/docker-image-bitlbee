@@ -1,0 +1,31 @@
+#!/bin/sh
+
+CFDIR=/etc/bitlbee
+
+: ${BITLBEE_OPERPASSWORD:=$(dd if=/dev/urandom bs=1 count=20 | base64)}
+: ${BITLBEE_HOSTNAME:=bitlbee}
+: ${BITLBEE_DAEMONPORT:=6667}
+: ${BITLBEE_CONFIGDIR:=/var/lib/bitlbee}
+
+if [ -f "$CFDIR/bitlbee.conf.in" ] && ! [ -f "$CFDIR/bitlbee.conf" ] ; then
+sed '
+s|\$OPERPASSWORD|'"$BITLBEE_OPERPASSWORD"'|
+s|\$HOSTNAME|'"$BITLBEE_HOSTNAME"'|
+s|\$DAEMONPORT|'"$BITLBEE_DAEMONPORT"'|
+s|\$CONFIGDIR|'"$BITLBEE_CONFIGDIR"'|
+' < "$CFDIR/bitlbee.conf.in" > "$CFDIR/bitlbee.conf"
+fi
+
+GWDEV=$(ip route | awk '$1 == "default" {print $5}')
+MYIP=$(ip addr show $GWDEV | awk '$1 == "inet" {print $2}' | cut -f1 -d/)
+
+cat <<EOF
+
+======================================================================
+Address: $MYIP
+Operator password: $BITLBEE_OPERPASSWORD
+======================================================================
+
+EOF
+
+exec /usr/sbin/bitlbee -nv
