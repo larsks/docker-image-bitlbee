@@ -6,6 +6,7 @@ RUN dnf -y install 'dnf-command(copr)'; \
 	bitlbee \
 	iproute \
 	bitlbee-facebook \
+	bitlbee-otr \
 	; dnf clean all
 
 RUN rm -f /etc/bitlbee/bitlbee.conf
