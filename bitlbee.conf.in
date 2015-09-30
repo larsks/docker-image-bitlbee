@@ -23,7 +23,7 @@ RunMode = ForkDaemon
 ## If BitlBee is started by root as a daemon, it can drop root privileges,
 ## and change to the specified user.
 ##
-User = bitlbee
+User = $USER
 
 ## DaemonPort/DaemonInterface:
 ##
