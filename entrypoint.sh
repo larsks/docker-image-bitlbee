@@ -26,7 +26,7 @@ cat <<EOF
 
 ======================================================================
 Address: $MYIP
-Operator password: $BITLBEE_OPERPASSWORD
+$(grep "^OperPassword" "$CFDIR/bitlbee.conf")
 ======================================================================
 
 EOF

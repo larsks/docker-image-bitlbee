@@ -1,12 +1,17 @@
-FROM fedora
+FROM fedora:30
 
-RUN dnf -y install 'dnf-command(copr)'; \
-	dnf -y copr enable larsks/bitlbee-facebook; \
-	dnf -y install \
+RUN dnf -y install 'dnf-command(copr)'
+RUN dnf -y copr enable ktdreyer/purple-slack
+RUN dnf -y install \
 	bitlbee \
 	iproute \
-	bitlbee-facebook \
 	bitlbee-otr \
+	purple-facebook \
+	purple-hangouts \
+	purple-mattermost \
+	purple-plugin_pack \
+	purple-slack \
+	purple-telegram \
 	; dnf clean all
 
 RUN rm -f /etc/bitlbee/bitlbee.conf
