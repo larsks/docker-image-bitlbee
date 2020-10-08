@@ -19,13 +19,9 @@ s|\$CONFIGDIR|'"$BITLBEE_CONFIGDIR"'|
 ' < "$CFDIR/bitlbee.conf.in" > "$CFDIR/bitlbee.conf"
 fi
 
-GWDEV=$(ip route | awk '$1 == "default" {print $5}')
-MYIP=$(ip addr show $GWDEV | awk '$1 == "inet" {print $2}' | cut -f1 -d/)
-
 cat <<EOF
 
 ======================================================================
-Address: $MYIP
 $(grep "^OperPassword" "$CFDIR/bitlbee.conf")
 ======================================================================
 
@@ -33,4 +29,4 @@ EOF
 
 chown -R ${BITLBEE_USER}:${BITLBEE_GROUP} ${BITLBEE_CONFIGDIR}
 
-exec /usr/sbin/bitlbee -nv
+exec /usr/sbin/bitlbee -nv "$@"
