@@ -14,8 +14,5 @@ RUN dnf -y install \
 	purple-telegram \
 	; dnf clean all
 
-RUN rm -f /etc/bitlbee/bitlbee.conf
-COPY bitlbee.conf.in /etc/bitlbee/bitlbee.conf.in
-
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
