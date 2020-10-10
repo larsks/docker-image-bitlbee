@@ -4,4 +4,7 @@
 
 chown -R ${BITLBEE_USER}:${BITLBEE_GROUP} ${BITLBEE_CONFIGDIR}
 
-exec /usr/sbin/bitlbee -Fnv ${BITLBEE_DAEMONPORT:+-p ${BITLBEE_DAEMONPORT}} "$@"
+exec /usr/sbin/bitlbee -Fnv \
+	${BITLBEE_DAEMONINTERFACE:+-i ${BITLBEE_DAEMONINTERFACE}} \
+	${BITLBEE_DAEMONPORT:+-p ${BITLBEE_DAEMONPORT}} \
+	"$@"
