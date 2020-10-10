@@ -13,6 +13,7 @@ RUN dnf -y install \
 	purple-slack \
 	purple-telegram \
 	; dnf clean all
+RUN chmod -R a+rx /etc/bitlbee
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
