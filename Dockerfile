@@ -17,3 +17,5 @@ RUN chmod -R a+rx /etc/bitlbee
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+USER bitlbee
