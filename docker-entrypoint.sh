@@ -1,6 +1,6 @@
 #!/bin/sh
 
-: ${BITLBEE_STATEDIR:=/var/lib/bitlbee}
+: ${BITLBEE_STATEDIR:=/bitlbee-data}
 : ${BITLBEE_CONFIG:=/etc/bitlbee/bitlbee.conf}
 
 exec /usr/sbin/bitlbee -Fnv \

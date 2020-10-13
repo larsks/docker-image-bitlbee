@@ -14,7 +14,7 @@ for...
 ## Example
 
     docker run  -d --name bitlbee --restart always \
-      -v /var/lib/bitlbee:/var/lib/bitlbee \
+      -v bitlbee_data:/bitlbee-data \
       -p 6667 larsks/bitlbee
 
 ## Configuration
@@ -25,7 +25,7 @@ for...
 
 - `BITLBEE_STATEDIR`
 
-  Path to writable directory for bitlbee state (e.g. `/var/lib/bitlbee`)
+  Path to writable directory for bitlbee state (e.g. `/bitlbee-data`)
 
 - `BITLBEE_DAEMONINTERFACE`
 
