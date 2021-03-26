@@ -1,4 +1,4 @@
-FROM fedora:32
+FROM fedora:33
 
 RUN dnf -y install 'dnf-command(copr)'
 RUN dnf -y copr enable ktdreyer/purple-slack
